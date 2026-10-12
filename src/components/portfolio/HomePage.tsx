@@ -5,12 +5,18 @@ import type { Locale } from '@/lib/portfolio-content';
 const copy = {
   en: {
     title: 'Yeyun Wan',
-    eyebrow: '',
-    kicker: 'Research & Engineering',
+    eyebrow: 'HELLO, I’M',
+    kicker: 'Research & Engineering for Intelligent Systems',
     profileDegree: 'Information and Computing Science',
     profileUniversity: "Xi’an Jiaotong-Liverpool University",
-    profileSummary: 'Exploring intelligent systems through research, software development, and human-centered design.',
+    profileSummary: 'I combine research and engineering across applied AI, XR, and software systems, with attention to human needs and real-world applications.',
     heroIntro: 'Information and Computing Science at Xi’an Jiaotong-Liverpool University.',
+    focusLabel: 'MY FOCUS',
+    focusItems: [
+      { number: '01', title: 'Research', detail: ['IDEAS TO EVIDENCE'] },
+      { number: '02', title: 'AI & XR', detail: ['MODELS · INTERACTIONS', 'ENVIRONMENTS'] },
+      { number: '03', title: 'Systems', detail: ['SOFTWARE · PLATFORMS', 'REAL-WORLD APPLICATIONS'] },
+    ],
     profileTags: ['AI', 'Software Systems', 'XR'],
     projects: 'Explore Projects', aboutLink: 'About me', publications: 'Publications',
     selectedLabel: 'SELECTED WORK', selectedTitle: 'Selected projects',
@@ -46,12 +52,18 @@ const copy = {
   },
   zh: {
     title: 'Yeyun Wan',
-    eyebrow: '',
-    kicker: '研究与工程实践',
+    eyebrow: '你好，我是',
+    kicker: '面向智能系统的研究与工程实践',
     profileDegree: '信息与计算科学',
     profileUniversity: '西交利物浦大学',
-    profileSummary: '通过研究、软件开发和以人为中心的设计探索智能系统。',
+    profileSummary: '我结合研究与工程实践，探索应用人工智能、XR 和软件系统，关注人的需求与真实场景中的应用。',
     heroIntro: '西交利物浦大学信息与计算科学专业本科生。',
+    focusLabel: '我的方向',
+    focusItems: [
+      { number: '01', title: '研究', detail: ['从想法到证据'] },
+      { number: '02', title: 'AI 与 XR', detail: ['模型 · 交互', '沉浸式环境'] },
+      { number: '03', title: '系统', detail: ['软件 · 平台', '真实场景应用'] },
+    ],
     profileTags: ['AI', '软件系统', 'XR'],
     projects: '浏览项目', aboutLink: '关于我', publications: '论文',
     selectedLabel: 'SELECTED WORK / 精选项目', selectedTitle: '精选项目',
@@ -163,12 +175,9 @@ export default function HomePage({ locale }: { locale: Locale }) {
     <section className="home-hero">
       <div className="container home-hero-inner">
         <div className="home-hero-copy">
-          {text.eyebrow && <p className="home-hero-eyebrow">{text.eyebrow}</p>}
-          <div className="home-hero-heading">
-            <h1>{text.title}</h1>
-            <p className="home-hero-title">{text.kicker}</p>
-          </div>
-          <p className="home-hero-tagline">{locale === 'en' ? <>Exploring intelligent systems through research, software development, <span className="home-tagline-kept">and human-centered design.</span></> : text.profileSummary}</p>
+          <p className="home-hero-eyebrow">{text.eyebrow}<span aria-hidden="true" /></p>
+          <h1>{text.title}</h1>
+          <p className="home-hero-tagline">{text.profileSummary}</p>
           <p className="home-hero-intro">{text.heroIntro}</p>
           <div className="hero-actions home-hero-actions">
             <Link className="button button-primary" href={`/${locale}/projects/`}>{text.projects}<span aria-hidden="true">→</span></Link>
@@ -178,9 +187,29 @@ export default function HomePage({ locale }: { locale: Locale }) {
             <a className="home-social-link" href="https://github.com/User-Wan" target="_blank" rel="noreferrer" aria-label="GitHub profile">
               <Github size={20} aria-hidden="true" />
             </a>
+            <span className="home-social-divider" aria-hidden="true" />
             <a className="home-social-link" href="mailto:evelyn_827@163.com" aria-label="Email Yeyun Wan">
               <Mail size={20} aria-hidden="true" />
             </a>
+          </div>
+        </div>
+        <div className="home-focus">
+          <p className="home-focus-eyebrow"><span aria-hidden="true" />{text.focusLabel}</p>
+          <h2>{text.kicker}</h2>
+          <div className="home-focus-map">
+            <svg className="home-focus-connector" viewBox="0 0 600 430" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M245 48 H315 V158 H350 V345 H245" />
+              <circle cx="245" cy="48" r="5" />
+              <circle cx="350" cy="158" r="5" />
+              <circle cx="245" cy="345" r="5" />
+            </svg>
+            {text.focusItems.map((item, index) => (
+              <div className={`home-focus-item home-focus-item-${index + 1}`} key={item.number}>
+                <div className="home-focus-number">{item.number}<span aria-hidden="true" /></div>
+                <h3>{item.title}</h3>
+                <p>{item.detail.map((line) => <span key={line}>{line}</span>)}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
