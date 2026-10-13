@@ -17,7 +17,7 @@ const copy = {
   en: {
     journalGroup: 'Journal articles',
     conferenceGroup: 'Conference contributions',
-    manuscriptGroup: 'Manuscripts & ongoing research',
+    manuscriptGroup: 'Ongoing research',
     journal: 'Medical & Biological Engineering & Computing (MBEC) · Volume 64 · pages 419–433',
     published: 'February 2026',
     doi: 'DOI', abstractLink: 'Abstract', bibtexLink: 'BibTeX',
@@ -29,7 +29,7 @@ const copy = {
   zh: {
     journalGroup: '期刊论文',
     conferenceGroup: '会议投稿与展示',
-    manuscriptGroup: '准备投稿与在研稿件',
+    manuscriptGroup: '在研工作',
     journal: 'Medical & Biological Engineering & Computing (MBEC) · 第 64 卷 · 419–433 页',
     published: '2026 年 2 月',
     doi: 'DOI', abstractLink: '摘要', bibtexLink: 'BibTeX',
@@ -52,11 +52,11 @@ type Entry = {
 };
 
 const kindLabels: Record<PublicationKind, Record<Locale, string>> = {
-  journal: { en: 'Journal Article', zh: '期刊论文' },
-  conference: { en: 'Conference Paper', zh: '会议论文' },
+  journal: { en: 'Full paper', zh: '完整论文' },
+  conference: { en: 'Full paper', zh: '完整论文' },
   poster: { en: 'Poster', zh: 'Poster' },
   demo: { en: 'Demo', zh: 'Demo' },
-  manuscript: { en: 'Manuscript', zh: '在研稿件' },
+  manuscript: { en: 'Full paper', zh: '完整论文' },
 };
 const statusKinds: Record<string, string> = {
   Published: 'published',
@@ -90,12 +90,14 @@ const manuscriptEntries: Entry[] = [
     authors: [{ name: 'Binwei Lei' }, { name: 'Cheng Lian' }, { name: 'Ruoxuan Mai' }, { name: 'Yeyun Wan', self: true }, { name: 'Qilei Sun', corresponding: true }],
     venue: 'IEEE Transactions on Visualization and Computer Graphics (TVCG) · 2026',
     kind: 'manuscript',
+    status: { en: 'Under Review', zh: '审稿中' },
   },
   {
     title: 'Demonstrating Drift: Breath-Paced Travel Through Restorative Virtual Worlds with a Live Physiological Mirror',
     authors: [{ name: 'Binwei Lei' }, { name: 'Yeyun Wan', self: true }, { name: 'Ruoxuan Mai' }, { name: 'Qilei Sun', corresponding: true }],
     venue: "ACM Symposium on Virtual Reality Software and Technology (VRST '26)",
     kind: 'demo',
+    status: { en: 'Under Review', zh: '审稿中' },
   },
 ];
 
